@@ -7,3 +7,9 @@ export interface IField {
 export interface IBoard {
   fields: IField[][]
 }
+
+export interface IScore {
+  scoreX?: number,
+  ties?: number,
+  scoreO?: number
+}

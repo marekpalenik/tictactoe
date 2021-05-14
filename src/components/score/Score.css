@@ -1,0 +1,26 @@
+.score {
+  width: 320px;
+  height: 100px;
+}
+
+.score > div {
+  width: 33.3%;
+  float: left;
+  text-align: center;
+}
+
+.score-x h4 {
+  color: blue;
+}
+
+.score-o h4 {
+  color: red;
+}
+
+.score-x.active {
+  background-color: lightcyan;
+}
+
+.score-o.active {
+  background-color: lavenderblush;
+}
