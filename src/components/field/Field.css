@@ -1,0 +1,51 @@
+.board-field {
+  width: 100px;
+  height: 100px;
+  border: 1px solid gray;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+
+.board-field:hover {
+  transition: all 200ms ease-in-out;
+  z-index: 10;
+}
+
+.board-field.active-x:hover {
+  box-shadow: 0 0 10px blue;
+}
+
+.board-field.active-o:hover {
+  box-shadow: 0 0 10px red;
+}
+
+.board-field line,
+.board-field circle {
+  display: none;
+}
+
+.board-field.selected-x,
+.board-field.selected-o{
+  cursor: not-allowed;
+}
+
+.board-field.selected-x line,
+.board-field.selected-o circle {
+  display: block;
+}
+
+.board-field.empty.active-x:hover {
+  background-color: lightcyan;
+}
+
+.board-field.empty.active-o:hover {
+  background-color: lavenderblush;
+}
+
+.board-field.empty.active-x:hover line,
+.board-field.empty.active-o:hover circle {
+  display: block;
+}
