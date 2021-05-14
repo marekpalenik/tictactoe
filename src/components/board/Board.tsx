@@ -1,6 +1,6 @@
 import React from 'react';
 import './Board.css';
-import { IBoard, IPlayer } from '../../lib/interfaces';
+import { IBoard, IField, IPlayer } from '../../lib/interfaces';
 import Field from '../field/Field';
 
 
@@ -9,13 +9,25 @@ export interface IStateProps {
   board: IBoard
 }
 
-export const Board = (props: IStateProps) => {
+export interface IDispatch {
+  handleFieldClick: (field: IField) => void;
+}
+
+export const Board = (props: IStateProps & IDispatch) => {
+
+  const extendField = (field: IField, row: number, column: number): IField => {
+    field.row = row;
+    field.column = column;
+    return field;
+  };
+
   return (
     <div className="board">
       {props.board.fields.map((row, i) =>
         <div className="row" key={i}>
-          {row.map((value, j) =>
-            <Field key={j} field={value} activePlayer={props.activePlayer}/>
+          {row.map((field, j) =>
+            <Field key={j} field={extendField(field, i, j)} activePlayer={props.activePlayer}
+              handleClick={props.handleFieldClick.bind(this, field)}/>
           )}
         </div>)}
     </div>

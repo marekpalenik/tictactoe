@@ -7,14 +7,24 @@ export interface IStateProps {
   field: IField
 }
 
-export const Field = (props: IStateProps) => {
+export interface IDispatch {
+  handleClick: () => void;
+}
 
-  const classNameBoard ='board-field'
+export const Field = (props: IStateProps & IDispatch) => {
+
+  const handleClick = () => {
+    if (!props.field.selectedByPlayer) {
+      props.handleClick();
+    }
+  };
+
+  const classNameBoard = 'board-field'
     + (props.field.selectedByPlayer ? ' selected-' + props.field.selectedByPlayer : ' empty')
     + (props.activePlayer ? ' active-' + props.activePlayer : '');
 
   return (
-    <div className={classNameBoard}>
+    <div className={classNameBoard} onClick={handleClick}>
       <svg height="100" width="100">
         <line x1="10" y1="10" x2="90" y2="90" stroke="blue" strokeWidth={10}/>
         <line x1="10" y1="90" x2="90" y2="10" stroke="blue" strokeWidth={10}/>

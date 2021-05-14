@@ -1,7 +1,9 @@
 export type IPlayer = 'x' | 'o';
 
 export interface IField {
-  selectedByPlayer?: IPlayer
+  selectedByPlayer?: IPlayer,
+  row?: number;
+  column?: number;
 }
 
 export interface IBoard {

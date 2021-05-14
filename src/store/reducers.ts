@@ -1,4 +1,4 @@
-import { IBoard, IPlayer, IScore } from '../lib/interfaces';
+import { IBoard, IField, IPlayer, IScore } from '../lib/interfaces';
 import { IAction, types } from './actions';
 
 export interface RootState {
@@ -9,10 +9,7 @@ export interface RootState {
 
 const initialState: RootState = {
   board: {
-    fields: [[{}, {}, {}],
-      [{}, {}, {}],
-      [{}, {}, {}]
-    ]
+    fields: [[{}, {}, {}], [{}, {}, {}], [{}, {}, {}]]
   }
 };
 
@@ -21,8 +18,10 @@ export const appReducer = (state: RootState = initialState, action: IAction): Ro
 
     case types.GAME_START:
       return {
-        ...initialState,
         activePlayer: 'x',
+        board: {
+          fields: [[{}, {}, {}], [{}, {}, {}], [{}, {}, {}]]
+        },
         score: {
           scoreO: 0,
           scoreX: 0,
@@ -30,6 +29,18 @@ export const appReducer = (state: RootState = initialState, action: IAction): Ro
         }
       };
 
+    case types.FIELD_SELECT: {
+      const newFields: IField[][] = [...state.board.fields];
+      newFields[action.payload.field.row][action.payload.field.column] = {
+        selectedByPlayer: action.payload.player
+      };
+
+      return {
+        ...state,
+        activePlayer: action.payload.player === 'x' ? 'o' : 'x',
+        board: {fields: newFields}
+      };
+    }
 
     default:
       return state;
