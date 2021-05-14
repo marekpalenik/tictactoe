@@ -1,7 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import HomePage, { IStateProps } from './HomePage';
+import { useDispatch, useSelector } from 'react-redux';
+import HomePage, { IDispatchProps, IStateProps } from './HomePage';
 import { RootState } from '../../store/reducers';
+import { startGame } from '../../store/actions';
 
 
 export const HomePageContainer = () => {
@@ -13,7 +14,14 @@ export const HomePageContainer = () => {
     };
   });
 
-  return (<HomePage  {...stateProps} />);
+  const dispatch = useDispatch();
+  const dispatchProps: IDispatchProps = {
+    handleStartGame: () => {
+      dispatch(startGame());
+    }
+  };
+
+  return <HomePage  {...stateProps} {...dispatchProps}/>;
 };
 
 export default HomePageContainer;

@@ -23,3 +23,6 @@ export const score2: IScore = {
   scoreX: 9999,
   ties: 1
 };
+
+export const noOp = () => {
+};

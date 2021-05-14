@@ -10,11 +10,19 @@ export interface IStateProps {
   score?: IScore
 }
 
-export const HomePage = (props: IStateProps) => {
+export interface IDispatchProps {
+  handleStartGame: () => void;
+}
+
+export const HomePage = (props: IStateProps & IDispatchProps) => {
   return (
     <div className="home-page">
+
       <Board board={props.board} activePlayer={props.activePlayer}/>
-      <Score activePlayer={props.activePlayer} score={props.score} />
+
+      <Score activePlayer={props.activePlayer} score={props.score}/>
+
+      <div className="start-button" onClick={props.handleStartGame}>start</div>
     </div>
   );
 };

@@ -1,4 +1,21 @@
-.home-page{
+.home-page {
   width: 360px;
   margin: 0 auto;
+}
+
+.home-page .start-button {
+  width: 160px;
+  height: 30px;
+  margin: 20px auto;
+  border: 1px solid gray;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: lightgreen;
+  line-height: 30px;
+  font-weight: bold;
+}
+
+.home-page .start-button:hover {
+  box-shadow: 0 0 10px green;
+  font-weight: bolder;
 }
