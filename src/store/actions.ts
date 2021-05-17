@@ -4,8 +4,8 @@ export enum types {
   INIT = '@@INIT',
 
   GAME_START = 'game/start',
-
   FIELD_SELECT = 'field/select',
+  MOVE_TIMEOUT = 'move/timeout',
 
 }
 
@@ -29,5 +29,11 @@ export const fieldSelect = (player: IPlayer, field: IField): IAction => {
       player
     },
     type: types.FIELD_SELECT
+  };
+};
+
+export const timeout = (): IAction => {
+  return {
+    type: types.MOVE_TIMEOUT
   };
 };

@@ -65,6 +65,12 @@ export const appReducer = (state: RootState = initialState, action: IAction): Ro
       };
     }
 
+    case types.MOVE_TIMEOUT:
+      return {
+        ...state,
+        activePlayer: state.activePlayer === 'x' ? 'o' : 'x'
+      };
+
     default:
       return state;
   }

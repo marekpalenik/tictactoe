@@ -9,6 +9,7 @@ export interface IStateProps {
   board: IBoard,
   gameProgress: GameProgress,
   score?: IScore
+  remainTime?:string;
 }
 
 export interface IDispatchProps {
@@ -33,6 +34,8 @@ export const HomePage = (props: IStateProps & IDispatchProps) => {
       {/* todo? make separate component */}
 
       <Board board={props.board} activePlayer={props.activePlayer} handleFieldClick={props.handleFieldClick}/>
+
+      <h1>{props.remainTime}</h1>
 
       <Score activePlayer={props.activePlayer} score={props.score}/>
 
