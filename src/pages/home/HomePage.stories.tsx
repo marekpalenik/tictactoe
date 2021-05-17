@@ -10,6 +10,6 @@ const dispatchProps: IDispatchProps = {
   handleStartGame: noOp
 };
 
-export const PlayerX = () => <HomePage board={board1} activePlayer={'x'} {...dispatchProps} />;
+export const PlayerX = () => <HomePage board={board1} activePlayer={'x'} gameProgress={'IN_PROGRESS'} {...dispatchProps} />;
 
-export const PlayerO = () => <HomePage board={board1} activePlayer={'o'} {...dispatchProps} />;
+export const PlayerO = () => <HomePage board={board1} activePlayer={'o'} gameProgress={'IN_PROGRESS'} {...dispatchProps} />;

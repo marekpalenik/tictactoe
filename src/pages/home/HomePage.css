@@ -1,6 +1,7 @@
 .home-page {
   width: 360px;
   margin: 0 auto;
+  position: relative;
 }
 
 .home-page .start-button {
@@ -18,4 +19,64 @@
 .home-page .start-button:hover {
   box-shadow: 0 0 10px green;
   font-weight: bolder;
+}
+
+.victory-line {
+  position: absolute;
+  border-width: 10px;
+  border-style: solid;
+}
+
+.victory-line.victor-x {
+  border-color: blue;
+  box-shadow: 0 0 10px blue;
+}
+
+.victory-line.victor-o {
+  border-color: red;
+  box-shadow: 0 0 10px red;
+}
+
+.type-ROW-0 {
+  border-left-width: 300px;
+  top: 45px;
+}
+
+.type-ROW-1 {
+  border-left-width: 300px;
+  top: 145px;
+}
+
+.type-ROW-2 {
+  border-left-width: 300px;
+  top: 245px;
+}
+
+.type-COLUMN-0 {
+  border-top-width: 300px;
+  left: 45px;
+}
+
+.type-COLUMN-1 {
+  border-top-width: 300px;
+  left: 145px;
+}
+
+.type-COLUMN-2 {
+  border-top-width: 300px;
+  left: 245px;
+}
+
+.type-DIAG-0 {
+  border-top-width: 420px;
+  rotate: 135deg;
+  top: -60px;
+  left: 145px;
+}
+
+.type-DIAG-1 {
+  border-top-width: 420px;
+  rotate: 45deg;
+  top: -60px;
+  left: 145px;
 }

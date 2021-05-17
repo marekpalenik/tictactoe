@@ -1,12 +1,13 @@
 import React from 'react';
 import './HomePage.css';
-import { IBoard, IField, IPlayer, IScore } from '../../lib/interfaces';
+import { GameProgress, IBoard, IField, IPlayer, IScore, Victory } from '../../lib/interfaces';
 import Board from '../../components/board/Board';
 import Score from '../../components/score/Score';
 
 export interface IStateProps {
   activePlayer?: IPlayer,
   board: IBoard,
+  gameProgress: GameProgress,
   score?: IScore
 }
 
@@ -16,14 +17,27 @@ export interface IDispatchProps {
 }
 
 export const HomePage = (props: IStateProps & IDispatchProps) => {
+
+  const getVictoryLineCssClass = (): string => {
+    if ((props.gameProgress as Victory).player) {
+      const victory = props.gameProgress as Victory;
+      return 'victory-line victor-' + victory.player + ' type-' + victory.type + '-' + victory.typeNumber;
+    } else {
+      return props.gameProgress as string;
+    }
+  };
+
   return (
     <div className="home-page">
+      <div className={getVictoryLineCssClass()}/>
+      {/* todo? make separate component */}
 
       <Board board={props.board} activePlayer={props.activePlayer} handleFieldClick={props.handleFieldClick}/>
 
       <Score activePlayer={props.activePlayer} score={props.score}/>
 
-      <div className="start-button" onClick={props.handleStartGame}>start</div>
+      <div className="start-button"
+        onClick={props.handleStartGame}>{props.gameProgress === 'IN_PROGRESS' ? 'reset' : 'start'}</div>
     </div>
   );
 };

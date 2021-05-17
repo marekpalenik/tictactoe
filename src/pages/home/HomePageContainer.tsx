@@ -11,15 +11,25 @@ export const HomePageContainer = () => {
   const stateProps: IStateProps = useSelector((state: RootState) => {
     return {
       activePlayer: state.activePlayer,
-      board: state.board
+      board: state.board,
+      gameProgress: state.gameProgress,
+      score: state.score
     };
   });
 
   const dispatch = useDispatch();
   const dispatchProps: IDispatchProps = {
+
     handleFieldClick: (field: IField) => {
-      dispatch(fieldSelect(stateProps.activePlayer!, field));
+      if (stateProps.gameProgress === 'NOT_STARTED') {
+        dispatch(startGame());
+        dispatch(fieldSelect('x', field));
+
+      } else if (stateProps.gameProgress === 'IN_PROGRESS') {
+        dispatch(fieldSelect(stateProps.activePlayer!, field));
+      }
     },
+
     handleStartGame: () => {
       dispatch(startGame());
     }
